@@ -63,7 +63,7 @@
       <div class="experience__content">
         <p class="section__subheader">WHO WE ARE</p>
         <h2 class="section__header">
-          We are ..................................
+          We are easy storage
         </h2>
         <p class="section__description">
           With a rich legacy spanning 25 years, our commitment to excellence in
