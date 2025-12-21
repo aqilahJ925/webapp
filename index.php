@@ -103,8 +103,7 @@
             <img src="assets/service-3.jpg" alt="service" />
             <h4>Secure Facility</h4>
             <p>
-              We utilize cutting-edge diagnostics and techniques to ensure
-              optimal condition.
+              Cliate-controlled warehouse at UNIJAYA with CCTV security and basic damage/loss guarantee for complete peace of mind.
             </p>
           </div>
           <div class="service__card">
