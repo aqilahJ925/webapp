@@ -86,7 +86,7 @@
         <div class="service__grid">
           <div class="service__card">
             <img src="assets/service-1.jpg" alt="service" />
-            <h4>Aligned Wheel</h4>
+            <h4>Flexible Packages</h4>
             <p>
               Experience smoother rides and extended tire life with our wheel
               alignment service.
