@@ -93,7 +93,7 @@
           </div>
           <div class="service__card">
             <img src="assets/service-2.jpg" alt="service" />
-            <h4>Electrical system</h4>
+            <h4>Campus Pickup & Delivery</h4>
             <p>
               Elevate car's electrical system to peak performance with our
               specialized expertise.
