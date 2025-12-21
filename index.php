@@ -63,7 +63,7 @@
       <div class="experience__content">
         <p class="section__subheader">WHO WE ARE</p>
         <h2 class="section__header">
-          Student-Built Storage Solution For UNIMAS Community
+          Student-Built Storage Solution For UNIMAS Community 1
         </h2>
         <p class="section__description">
           Easy Storage was founded by UNIMAS students who experienced firsthand
