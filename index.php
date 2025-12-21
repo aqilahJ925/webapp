@@ -108,10 +108,9 @@
           </div>
           <div class="service__card">
             <img src="assets/service-4.jpg" alt="service" />
-            <h4>Engine Diagnostics</h4>
+            <h4>Transparent Online Booking</h4>
             <p>
-              Unlock the secrets of your car's performance with state-of-the-art
-              diagnostic services.
+              Clear pricing, easy scheduling, and secure payment options all on one user-friendly platform.
             </p>
           </div>
         </div>
