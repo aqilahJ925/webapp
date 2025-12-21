@@ -121,7 +121,7 @@
       <p class="section__subheader">BEST PACKAGES</p>
       <h2 class="section__header">Our Storing Plans</h2>
       <p class="section__description">
-        We offer a range of affordable and flexible pricing options.
+        We offer flexible and affordable storage packages designed for students.
       </p>
       <div class="price__grid">
         <div class="price__card">
