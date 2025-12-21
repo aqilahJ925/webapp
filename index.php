@@ -119,7 +119,7 @@
 
     <section class="section__container price__container" id="price">
       <p class="section__subheader">BEST PACKAGES</p>
-      <h2 class="section__header">Our Pricing Plans</h2>
+      <h2 class="section__header">Our Storing Plans</h2>
       <p class="section__description">
         We offer a range of affordable and flexible pricing options.
       </p>
