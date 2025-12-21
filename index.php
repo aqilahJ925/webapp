@@ -88,8 +88,7 @@
             <img src="assets/service-1.jpg" alt="service" />
             <h4>Flexible Packages</h4>
             <p>
-              Experience smoother rides and extended tire life with our wheel
-              alignment service.
+              Choose from three packages with duration options for short-term, mid-semester, or full semester breaks.
             </p>
           </div>
           <div class="service__card">
