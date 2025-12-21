@@ -79,7 +79,7 @@
     <section class="service" id="service">
       <div class="section__container service__container">
         <p class="section__subheader">WHY CHOOSE US</p>
-        <h2 class="section__header">Great Car Service</h2>
+        <h2 class="section__header">Professional Storage Service</h2>
         <p class="section__description">
           Trust us to keep your automobile running smoothly and reliably.
         </p>
