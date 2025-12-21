@@ -46,7 +46,7 @@
 
     <section class="banner__container">
       <div class="banner__card">
-        <h4>Satisfaction Guaranteed or Your Dent Back.</h4>
+        <h4>Item Protection Guaranteed For Your Peace of Mind.</h4>
       </div>
       <div class="banner__card">
         <h4>Caring For Your Car The Way You Would.</h4>
