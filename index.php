@@ -81,7 +81,7 @@
         <p class="section__subheader">WHY CHOOSE US</p>
         <h2 class="section__header">Professional Storage Service</h2>
         <p class="section__description">
-          Trust us to keep your automobile running smoothly and reliably.
+          We provide secure, transparent, and convenient storage designed specifically for student needs.
         </p>
         <div class="service__grid">
           <div class="service__card">
