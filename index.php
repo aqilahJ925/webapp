@@ -66,10 +66,11 @@
           Student-Built Storage Solution For UNIMAS Community
         </h2>
         <p class="section__description">
-          With a rich legacy spanning 25 years, our commitment to excellence in
-          car servicing is unwavering. Our seasoned team brings a wealth of
-          experience to ensure your vehicle receives top-notch care. Trust in
-          our expertise to keep your car running smoothly and safely.
+          Easy Storage was founded by UNIMAS students who experienced firsthand
+          the challenge of finding reliable storage durinng semester breaks. That's
+          why we created Easy Storage, a professional, transparent, and student-friendly
+          platform that combines secure physical storage at UNIJAYA (less than 10 minutes from campus)
+          with easy online booking and affordable rates designed for student budgets.
         </p>
         <button class="btn">Read More</button>
       </div>
