@@ -95,8 +95,8 @@
             <img src="assets/service-2.jpg" alt="service" />
             <h4>Campus Pickup & Delivery</h4>
             <p>
-              Elevate car's electrical system to peak performance with our
-              specialized expertise.
+              Convenient pickup and return at designated on-campus collection points 
+              at UNIMAS without needing to transport items yourself.
             </p>
           </div>
           <div class="service__card">
