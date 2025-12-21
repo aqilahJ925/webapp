@@ -103,7 +103,7 @@
             <img src="assets/service-3.jpg" alt="service" />
             <h4>Secure Facility</h4>
             <p>
-              Cliate-controlled warehouse at UNIJAYA with CCTV security and basic damage/loss guarantee for complete peace of mind.
+              Climate-controlled warehouse at UNIJAYA with CCTV security and basic damage/loss guarantee for complete peace of mind.
             </p>
           </div>
           <div class="service__card">
