@@ -99,6 +99,9 @@ adminLogin();
             <a href="packages.php">
                 <i class="bi bi-box-seam me-2"></i> Storage Packages
             </a>
+            <a href="packages.php">
+                <i class="bi bi-box-seam me-2"></i> Booking & Payments
+            </a>
         </div>
 
 
