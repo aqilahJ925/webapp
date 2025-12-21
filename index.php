@@ -36,7 +36,7 @@
       </nav>
       <div class="section__container header__container" id="home">
         <div class="header__content">
-          <h1>We Are Qualified & Professional</h1>
+          <h1>Professional. Secure. Convenient.</h1>
           <div class="header__btn">
             <button class="btn">Read More</button>
           </div>
