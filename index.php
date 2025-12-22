@@ -128,9 +128,9 @@
           <h4>STARTER PACK</h4>
           <h3><sup>From RM</sup>35</h3>
           <p>Up to 3 items</p>
-          <p>Short-term Duration</p>
-          <p>Mid-Semester Break Option</p>
-          <p>Full Semester Break Option</p>
+          <p>Short-term Duration (RM30)</p>
+          <p>Mid-Semester Break Option (RM45)</p>
+          <p>Full Semester Break Option (RM60)</p>
           <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
           <button class="btn">Book Starter</button>
@@ -150,13 +150,14 @@
         <div class="price__card">
           <h4>MAX PACK</h4>
           <h3><sup>From RM</sup>60</h3>
-          <p>Routine Maintenance</p>
-          <p>Diagnostic Services</p>
-          <p>Brake and Suspension</p>
-          <p>Scheduled Maintenance</p>
-          <p>Wheel Alignment</p>
-          <p>Air Conditioning</p>
-          <button class="btn">Go Standard</button>
+          <p>Up to 7 items</p>
+          <p>Short-term Duration</p>
+          <p>Mid-Semester Break Option</p>
+          <p>Full Semester Break Option</p>
+          <p>Campus Pickup & Delivery</p>
+          <p>Digital Inventory Receipt</p>
+          <p>Maximum Capacity</p>
+          <button class="btn">Book Max</button>
         </div>
       </div>
     </section>
