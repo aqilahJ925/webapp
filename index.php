@@ -191,10 +191,9 @@
             <div class="testimonial__card">
               <img src="assets/testimonial-1.jpg" alt="testimonial" />
               <p>
-                I couldn't believe my eyes when I got my car back from the
-                service. It looked and drove like it had just rolled off the
-                assembly line. The team did an incredible job, and I'm a
-                customer for life!
+                I am so thankful to Easy Storage for keeping my belongings 
+                secured during semester break since my college management 
+                did not allow students to leave their stuffs in college.
               </p>
               <h4>- Sarah T.</h4>
             </div>
@@ -281,7 +280,7 @@
       </div>
     </footer>
     <div class="footer__bar">
-      Copyright © 2023 Web Design Mastery. All rights reserved.
+      SEG01-02 - TMF3973 Web Application Development
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
