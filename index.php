@@ -58,7 +58,7 @@
 
     <section class="section__container experience__container" id="about">
       <div class="experience__image">
-        <img src="assets/experience.jpg" alt="experience" />
+        <img src="assets/experience-new.jpg" alt="experience" />
       </div>
       <div class="experience__content">
         <p class="section__subheader">WHO WE ARE</p>
