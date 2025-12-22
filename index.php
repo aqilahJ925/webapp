@@ -137,19 +137,19 @@
         </div>
         <div class="price__card">
           <div class="price__card__ribbon">BESTSELLER</div>
-          <h4>PLATINUM PACKAGE</h4>
-          <h3><sup>$</sup>69</h3>
-          <p>Routine Maintenance</p>
-          <p>Diagnostic Services</p>
-          <p>Engine Tune-Ups</p>
-          <p>Tire Sales and Services</p>
-          <p>Exhaust System Repairs</p>
-          <p>Scheduled Maintenance</p>
-          <button class="btn">Go Premium</button>
+          <h4>STANDARD PACK</h4>
+          <h3><sup>From RM</sup>45</h3>
+          <p>Up to 5 Items</p>
+          <p>Short-term Duration</p>
+          <p>Mis-Semester Break Option</p>
+          <p>Full Semester Break Option</p>
+          <p>Campus Pickup 7 Delivery</p>
+          <p>Digital Inventory Receipt</p>
+          <button class="btn">Book Standard</button>
         </div>
         <div class="price__card">
-          <h4>GOLD PACKAGE</h4>
-          <h3><sup>$</sup>39</h3>
+          <h4>MAX PACK</h4>
+          <h3><sup>From RM</sup>60</h3>
           <p>Routine Maintenance</p>
           <p>Diagnostic Services</p>
           <p>Brake and Suspension</p>
