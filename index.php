@@ -126,7 +126,7 @@
       <div class="price__grid">
         <div class="price__card">
           <h4>STARTER PACK</h4>
-          <h3><sup>From RM</sup>35</h3>
+          <h3><sup>From RM</sup>30</h3>
           <p>Up to 3 items</p>
           <p>Short-term Duration (RM30)</p>
           <p>Mid-Semester Break Option (RM45)</p>

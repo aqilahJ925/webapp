@@ -86,7 +86,7 @@ body {
 .header {
   padding-block: 5rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("assets/header.jpg");
+    url("assets/header.new.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
