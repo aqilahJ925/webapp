@@ -52,7 +52,7 @@
         <h4>Caring For Your Belongings The Way You Would.</h4>
       </div>
       <div class="banner__image">
-        <img src="assets/banner.jpg" alt="banner" />
+        <img src="assets/banner-new.jpg" alt="banner" />
       </div>
     </section>
 
