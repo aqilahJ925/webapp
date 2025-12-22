@@ -189,7 +189,7 @@
           <!-- Slides -->
           <div class="swiper-slide">
             <div class="testimonial__card">
-              <img src="assets/testimonial-1.jpg" alt="testimonial" />
+              <img src="assets/testimonial-new1.jpg" alt="testimonial" />
               <p>
                 I am so thankful to Easy Storage for keeping my belongings 
                 secured during semester break since my college management 
@@ -200,7 +200,7 @@
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
-              <img src="assets/testimonial-2.jpg" alt="testimonial" />
+              <img src="assets/testimonial-new2.jpg" alt="testimonial" />
               <p>
                 I wanted to go back to Sabah for the long semester break, but it is 
                 too much hassle to pack many bags. Besides, I will still be staying in 
@@ -212,7 +212,7 @@
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
-              <img src="assets/testimonial-3.jpg" alt="testimonial" />
+              <img src="assets/testimonial-new3.jpg" alt="testimonial" />
               <p>
                 Good and recommended service. I do not need to worry about my belongings 
                 when I need to travel back home again. Will definitely use Easy Storage 
