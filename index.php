@@ -140,9 +140,9 @@
           <h4>STANDARD PACK</h4>
           <h3><sup>From RM</sup>45</h3>
           <p>Up to 5 Items</p>
-          <p>Short-term Duration</p>
-          <p>Mis-Semester Break Option</p>
-          <p>Full Semester Break Option</p>
+          <p>Short-term Duration (RM45)</p>
+          <p>Mid-Semester Break Option (RM65)</p>
+          <p>Full Semester Break Option (RM85)</p>
           <p>Campus Pickup 7 Delivery</p>
           <p>Digital Inventory Receipt</p>
           <button class="btn">Book Standard</button>
