@@ -151,9 +151,9 @@
           <h4>MAX PACK</h4>
           <h3><sup>From RM</sup>60</h3>
           <p>Up to 7 items</p>
-          <p>Short-term Duration</p>
-          <p>Mid-Semester Break Option</p>
-          <p>Full Semester Break Option</p>
+          <p>Short-term Duration (RM 60)</p>
+          <p>Mid-Semester Break Option (RM85)</p>
+          <p>Full Semester Break Option (RM110)</p>
           <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
           <p>Maximum Capacity</p>
