@@ -166,10 +166,10 @@
       <div class="section__container contact__container">
         <div class="contact__content">
           <p class="section__subheader">CONTACT US</p>
-          <h2 class="section__header">Imagine Your Car Feeling New Again</h2>
+          <h2 class="section__header">Store Your Items With Complete Peace of Mind</h2>
           <p class="section__description">
-            Experience the magic of a rejuvenated ride as we pamper your car
-            with precision care, leaving it feeling as good as new.
+            Experience the convenience of hassle-free storage as we take care of your Belongings
+            with professional handling, leaving them safe and secure until you need them again.
           </p>
           <div class="contact__btns">
             <button class="btn">Our Services</button>
