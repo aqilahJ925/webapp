@@ -278,7 +278,7 @@
       </div>
     </footer>
     <div class="footer__bar">
-      SEG01-02 - TMF3973 Web Application Development
+      SEG01-02 - TMF3973 Web Application Development wowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -286,3 +286,4 @@
     <script src="main.js"></script>
   </body>
 </html>
+
