@@ -126,14 +126,14 @@
       <div class="price__grid">
         <div class="price__card">
           <h4>STARTER PACK</h4>
-          <h3><sup>$</sup>35</h3>
-          <p>Routine Maintenance</p>
-          <p>Diagnostic Services</p>
-          <p>Wheel Alignment</p>
-          <p>Brake and Suspension</p>
-          <p>Air Conditioning</p>
-          <p>Scheduled Maintenance</p>
-          <button class="btn">Go Basic</button>
+          <h3><sup>From RM</sup>35</h3>
+          <p>Up to 3 items</p>
+          <p>Short-term Duration</p>
+          <p>Mid-Semester Break Option</p>
+          <p>Full Semester Break Option</p>
+          <p>Campus Pickup & Delivery</p>
+          <p>Digital Inventory Receipt</p>
+          <button class="btn">Book Starter</button>
         </div>
         <div class="price__card">
           <div class="price__card__ribbon">BESTSELLER</div>
