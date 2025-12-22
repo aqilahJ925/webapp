@@ -85,14 +85,14 @@
         </p>
         <div class="service__grid">
           <div class="service__card">
-            <img src="assets/service-1new.jpg" alt="service" />
+            <img src="assets/service-1.jpg" alt="service" />
             <h4>Flexible Packages</h4>
             <p>
               Choose from three packages with duration options for short-term, mid-semester, or full semester breaks.
             </p>
           </div>
           <div class="service__card">
-            <img src="assets/service-2new.jpg" alt="service" />
+            <img src="assets/service-2.jpg" alt="service" />
             <h4>Campus Pickup & Delivery</h4>
             <p>
               Convenient pickup and return at designated on-campus collection points 
@@ -100,14 +100,14 @@
             </p>
           </div>
           <div class="service__card">
-            <img src="assets/service-3new.jpg" alt="service" />
+            <img src="assets/service-3.jpg" alt="service" />
             <h4>Secure Facility</h4>
             <p>
               Climate-controlled warehouse at UNIJAYA with CCTV security and basic damage/loss guarantee for complete peace of mind.
             </p>
           </div>
           <div class="service__card">
-            <img src="assets/service-4new.jpg" alt="service" />
+            <img src="assets/service-4.jpg" alt="service" />
             <h4>Transparent Online Booking</h4>
             <p>
               Clear pricing, easy scheduling, and secure payment options all on one user-friendly platform.
@@ -278,7 +278,7 @@
       </div>
     </footer>
     <div class="footer__bar">
-      SEG01-02 - TMF3973 Web Application Development wowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+      SEG01-02 - TMF3973 Web Application Development 
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
