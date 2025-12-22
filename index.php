@@ -125,7 +125,7 @@
       </p>
       <div class="price__grid">
         <div class="price__card">
-          <h4>SILVER PACKAGE</h4>
+          <h4>STARTER PACK</h4>
           <h3><sup>$</sup>35</h3>
           <p>Routine Maintenance</p>
           <p>Diagnostic Services</p>
