@@ -270,10 +270,10 @@
               </p>
             </li>
             <li>
-              <p>Phone: <span>+91 9876543210</span></p>
+              <p>Phone: <span>+60 178109462</span></p>
             </li>
             <li>
-              <p>Email: <span>info@carserving.com</span></p>
+              <p>Email: <span>info@easystorage.com</span></p>
             </li>
           </ul>
         </div>
