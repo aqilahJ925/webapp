@@ -195,31 +195,30 @@
                 secured during semester break since my college management 
                 did not allow students to leave their stuffs in college.
               </p>
-              <h4>- Sarah T.</h4>
+              <h4>- Siti Zen</h4>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
               <img src="assets/testimonial-2.jpg" alt="testimonial" />
               <p>
-                I've been bringing my car here for years, and they never
-                disappoint. Their attention to detail and commitment to quality
-                service is unmatched. My car always feels brand new after a
-                visit.
+                I wanted to go back to Sabah for the long semester break, but it is 
+                too much hassle to pack many bags. Besides, I will still be staying in 
+                campus next semester anyway. Thank goodness I found Easy Storage to help me keep
+                my stuffs safely.
               </p>
-              <h4>- John P.</h4>
+              <h4>- Mark Sagan</h4>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="testimonial__card">
               <img src="assets/testimonial-3.jpg" alt="testimonial" />
               <p>
-                As a car enthusiast, I'm extremely particular about who touches
-                my prized possession. Their team's expertise and passion for
-                cars truly shine through in their work. My car has never looked
-                better.
+                Good and recommended service. I do not need to worry about my belongings 
+                when I need to travel back home again. Will definitely use Easy Storage 
+                again in the future.
               </p>
-              <h4>- David S.</h4>
+              <h4>- Josiah T.</h4>
             </div>
           </div>
         </div>
@@ -265,8 +264,7 @@
           <ul class="footer__links">
             <li>
               <p>
-                Experience the magic of a rejuvenated ride as we pamper your car
-                with precision care
+                Travel Light, Store Smart This Semester Break
               </p>
             </li>
             <li>
