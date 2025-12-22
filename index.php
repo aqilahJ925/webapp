@@ -143,7 +143,7 @@
           <p>Short-term Duration (RM45)</p>
           <p>Mid-Semester Break Option (RM65)</p>
           <p>Full Semester Break Option (RM85)</p>
-          <p>Campus Pickup 7 Delivery</p>
+          <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
           <button class="btn">Book Standard</button>
         </div>
