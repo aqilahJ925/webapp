@@ -265,6 +265,36 @@ nav {
   color: var(--white);
 }
 
+.booking__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.booking__card {
+  width: 80%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.booking-form .col-lg-8 {
+  max-width: 800px; /* adjust to be wider than price cards */
+}
+
+/* Rounds the address textarea */
+textarea[name="pickup_address"] {
+    border-radius: 8px;
+    border: 1px solid #ccc; /* Optional: defines the border clearly */
+}
+
+/* Rounds the date input boxes */
+input[type="date"] {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px; /* Adds space inside so the text doesn't hit the curve */
+}
 .price__container {
   text-align: center;
 }

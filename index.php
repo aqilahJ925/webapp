@@ -133,7 +133,9 @@
           <p>Full Semester Break Option (RM60)</p>
           <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
-          <button class="btn">Book Starter</button>
+          <a href="booking.php?package=1">
+            <button class="btn">Book Starter</button>
+          </a>
         </div>
         <div class="price__card">
           <div class="price__card__ribbon">BESTSELLER</div>
@@ -145,7 +147,9 @@
           <p>Full Semester Break Option (RM85)</p>
           <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
-          <button class="btn">Book Standard</button>
+          <a href="booking.php?package=2">
+            <button class="btn">Book Standard</button>
+          </a>
         </div>
         <div class="price__card">
           <h4>MAX PACK</h4>
@@ -157,7 +161,9 @@
           <p>Campus Pickup & Delivery</p>
           <p>Digital Inventory Receipt</p>
           <p>Maximum Capacity</p>
-          <button class="btn">Book Max</button>
+          <a href="booking.php?package=3">
+            <button class="btn">Book Max</button>
+          </a>
         </div>
       </div>
     </section>
