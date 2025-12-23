@@ -55,9 +55,9 @@ if (isset($_SESSION['staffLogin']) && $_SESSION['staffLogin'] == true) {
           >
         </div>
 
-<button name="login" type="submit" class="btn text-white bg-dark shadow-none px-4">
-  LOGIN
-</button>
+        <button name="login" type="submit" class="btn text-white bg-dark shadow-none w-100">
+          LOGIN
+        </button>
       </div>
     </form>
   </div>
