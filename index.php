@@ -31,7 +31,7 @@
           <li><a href="#service">SERVICE</a></li>
           <li><a href="#price">PRICE</a></li>
           <li><a href="#client">REVIEW</a></li>
-          <button class="btn">Login</button>
+          <a href="logincustomer.php" class="btn">Login</a>
         </ul>
       </nav>
       <div class="section__container header__container" id="home">
