@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
             <form method="POST">
 
                 <div class="mb-3">
-                    <label class="form-label">User ID</label>
+                    <label class="form-label">Username</label>
                     <input type="text" name="user_id" class="form-control" required>
                 </div>
 
@@ -136,7 +136,7 @@ if (isset($_POST['login'])) {
             <form method="POST">
 
                 <div class="mb-3">
-                    <label class="form-label">User ID</label>
+                    <label class="form-label">Username</label>
                     <input type="text" name="user_id" class="form-control" required>
                 </div>
 
