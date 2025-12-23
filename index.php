@@ -252,11 +252,11 @@
         <div class="footer__col">
           <h4>Storage Tips</h4>
           <ul class="footer__links">
-            <li>Pack Smart: Use Boxes</li>
-            <li>Label Everything Clearly</li>
-            <li>Avoid Storing Perishables</li>
-            <li>Use Bubble Wrap for Fragiles</li>
-            <li>Stack Heaviest Items Below</li>
+            <li><p>Pack Smart: Use Boxes</p></li>
+            <li><p>Label Everything Clearly</p></li>
+            <li><p>Avoid Storing Perishables</p></li>
+            <li><p>Use Bubble Wrap for Fragiles</p></li>
+            <li><p>Stack Heaviest Items Below</p></li>
           </ul>
         </div>
         <div class="footer__col">
