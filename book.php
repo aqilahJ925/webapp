@@ -1,4 +1,9 @@
 <?php
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
+
 session_start();
 $package = $_GET['package'] ?? 'starter';
 $packageName = ucfirst($package) . ' Pack';
