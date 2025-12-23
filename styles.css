@@ -503,6 +503,7 @@ input[type="date"] {
 
 .footer__links li {
   margin-bottom: 1rem;
+  color: var(--white) !important;
 }
 
 .footer__links a {
