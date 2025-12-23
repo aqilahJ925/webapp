@@ -250,13 +250,13 @@
           </ul>
         </div>
         <div class="footer__col">
-          <h4>Our Services</h4>
+          <h4>Storage Tips</h4>
           <ul class="footer__links">
-            <li><a href="#">Skilled Mechanics</a></li>
-            <li><a href="#">Routine Maintenance</a></li>
-            <li><a href="#">Customized Solutions</a></li>
-            <li><a href="#">Competitive Pricing</a></li>
-            <li><a href="#">Satisfaction Guaranteed</a></li>
+            <li>Pack Smart: Use Boxes</li>
+            <li>Label Everything Clearly</li>
+            <li>Avoid Storing Perishables</li>
+            <li>Use Bubble Wrap for Fragiles</li>
+            <li>Stack Heaviest Items Below</li>
           </ul>
         </div>
         <div class="footer__col">
