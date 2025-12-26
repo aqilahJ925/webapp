@@ -1,31 +1,34 @@
 <?php
 session_start();
+include 'admin/connection.php'; 
 
 $error = "";
 
 if (isset($_POST['login'])) {
 
-    $user_id = trim($_POST['user_id']);
-    $password = trim($_POST['password']);
+    $email_input = trim($_POST['user_id']); 
+    $password_input = trim($_POST['password']);
 
-    if ($user_id == "" || $password == "") {
+    if ($email_input == "" || $password_input == "") {
         $error = "Please fill in all fields.";
     } else {
-
-        $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
-        $stmt->bind_param("s", $user_id);
+        
+        $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email_input);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
 
-            // If password is stored as plain text
-            if ($password === $user['password']) {
+            
+            $hashed_pass = md5($password_input); 
+            
+            if ($hashed_pass === $user['password']) {
 
                 $_SESSION['customerLogin'] = true;
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['customerName'] = $user['name'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['customerName'] = $user['firstName']; 
 
                 header("Location: customerdashboard.php");
                 exit;
@@ -33,7 +36,7 @@ if (isset($_POST['login'])) {
                 $error = "Invalid password.";
             }
         } else {
-            $error = "User ID not found.";
+            $error = "User not found with that email.";
         }
     }
 }
@@ -136,8 +139,8 @@ if (isset($_POST['login'])) {
             <form method="POST">
 
                 <div class="mb-3">
-                    <label class="form-label">User ID</label>
-                    <input type="text" name="user_id" class="form-control" required>
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="user_id" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
@@ -152,11 +155,10 @@ if (isset($_POST['login'])) {
                 <div class="text-center mt-3">
                     <a href="index.php">← Back to Home</a>
                 </div>
-                <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+                
+                <div class="text-center mt-3">
                     <span>Don't have an account?</span>
-                    <button type="button" class="switch-btn p-0" id="signUpButton">
-                    Sign Up
-                    </button>
+                    <a href="register.php">Sign Up</a>
                 </div>
 
             </form>
