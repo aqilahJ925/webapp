@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,7 +35,21 @@
           <li><a href="#service">SERVICE</a></li>
           <li><a href="#price">PRICE</a></li>
           <li><a href="#client">REVIEW</a></li>
-          <a href="logincustomer.php" class="btn">Login</a>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <li>
+              <a href="profile.php" class="links">
+                <i class="ri-user-line"></i>
+                <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+              </a>
+            </li>
+            <li>
+              <a href="logout.php" class="btn btn--outline">Logout</a>
+            </li>
+          <?php else: ?>
+            <li>
+              <a href="logincustomer.php" class="btn">Login</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </nav>
       <div class="section__container header__container" id="home">

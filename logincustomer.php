@@ -1,43 +1,59 @@
 <?php
 session_start();
+$success = "";
+
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']); // remove after showing once
+}
+
+include 'admin/connection.php'; 
 
 $error = "";
 
 if (isset($_POST['login'])) {
 
-    $user_id = trim($_POST['user_id']);
-    $password = trim($_POST['password']);
+    $email_input = trim($_POST['email']); 
+    $password_input = trim($_POST['password']);
 
-    if ($user_id == "" || $password == "") {
+    if ($email_input == "" || $password_input == "") {
         $error = "Please fill in all fields.";
     } else {
-
-        $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
-        $stmt->bind_param("s", $user_id);
+        
+        $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email_input);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
 
-            // If password is stored as plain text
-            if ($password === $user['password']) {
+            
+            $hashed_pass = md5($password_input); 
+            
+            if ($hashed_pass === $user['password']) {
 
-                $_SESSION['customerLogin'] = true;
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['customerName'] = $user['name'];
+                $_SESSION['user_id'] = $user['id'];          // REQUIRED
+                $_SESSION['user_name'] = $user['firstName']; // For navbar display
+                $_SESSION['email'] = $user['email'];
 
-                header("Location: customerdashboard.php");
+                header("Location: index.php");
                 exit;
             } else {
                 $error = "Invalid password.";
             }
         } else {
-            $error = "User ID not found.";
+            $error = "User not found with that email.";
         }
     }
 }
 ?>
+
+<?php if ($success): ?>
+    <div class="alert alert-success">
+        <?= $success ?>
+    </div>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,65 +78,6 @@ if (isset($_POST['login'])) {
 
 <body>
 
-<div class="container" id="signup" style="display:none;">
-    <div class="card login-card shadow-sm">
-        <div class="card-body p-4">
-
-            <h4 class="text-center mb-4">Customer Register</h4>
-
-            <?php if ($error): ?>
-                <div class="alert alert-danger">
-                    <?= $error ?>
-                </div>
-            <?php endif; ?>
-
-            <form method="POST">
-
-                <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" name="user_id" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" name="user_email" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Address</label>
-                    <input type="text" name="user_email" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Phone number</label>
-                    <input type="tel" name="phone_number" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-
-                <button type="submit" name="login" class="btn w-100">
-                    Login
-                </button>
-
-                <div class="text-center mt-3">
-                    <a href="index.php">← Back to Home</a>
-                </div>
-                <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
-                    <span>Already have account?</span>
-                    <button type="button" class="switch-btn p-0" id="signInButton">
-                    Sign In
-                    </button>
-                </div>
-
-            </form>
-
-        </div>
-    </div>
-</div>
-
 <div class="container" id="signIn">
     <div class="card login-card shadow-sm">
         <div class="card-body p-4">
@@ -136,8 +93,8 @@ if (isset($_POST['login'])) {
             <form method="POST">
 
                 <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" name="user_id" class="form-control" required>
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
@@ -152,11 +109,10 @@ if (isset($_POST['login'])) {
                 <div class="text-center mt-3">
                     <a href="index.php">← Back to Home</a>
                 </div>
-                <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+                
+                <div class="text-center mt-3">
                     <span>Don't have an account?</span>
-                    <button type="button" class="switch-btn p-0" id="signUpButton">
-                    Sign Up
-                    </button>
+                    <a href="register.php">Sign Up</a>
                 </div>
 
             </form>

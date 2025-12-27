@@ -43,5 +43,23 @@ if(!$con){
         die("Query cannot be prepared - Select");
     }
 }
+function insert($query, $values, $datatypes)
+{
+    global $con;
+    $stmt = mysqli_prepare($con, $query);
+    if($stmt){
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if(mysqli_stmt_execute($stmt)){
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res; 
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query cannot be executed - Insert");
+        }
+    } else {
+        die("Query cannot be prepared - Insert");
+    }
+}
 
 ?>
