@@ -196,7 +196,7 @@ session_start();
         </p>
         <div class="contact__btns">
           <a href="#service" class="btn" style="background:transparent; border: 2px solid white;">Our Services</a>
-          <a href="#contact-info" class="btn" style="background:white; color:var(--primary-color);">Contact Us</a>
+          <a href="#contact" class="btn" style="background:white; color:var(--primary-color);">Contact Us</a>
         </div>
       </div>
     </div>
