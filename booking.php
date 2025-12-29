@@ -1,31 +1,32 @@
 <?php
-require 'admin/connection.php';
-session_start();
+require_once "admin/connection.php";
 
-if (!isset($_GET['packageID'])) {
-    header("Location: services.php");
+if (!isset($_GET['package'])) {
+    header("Location: index.php");
     exit;
 }
 
-$packageID = (int)$_GET['packageID'];
+$packageID = (int) $_GET['package'];
 
+// Get package
 $stmt = $con->prepare("SELECT * FROM storagepackage WHERE packageID = ?");
 $stmt->bind_param("i", $packageID);
 $stmt->execute();
-$result = $stmt->get_result();
-$package = $result->fetch_assoc();
+$package = $stmt->get_result()->fetch_assoc();
 
 if (!$package) {
-    header("Location: services.php");
+    header("Location: index.php");
     exit;
 }
 
-$stmt2 = $con->prepare("SELECT * FROM package_durations WHERE packageID = ?");
-$stmt2->bind_param("i", $packageID);
-$stmt2->execute();
-$durations = $stmt2->get_result();
+// Get durations
+$durations = $con->prepare(
+    "SELECT * FROM package_durations WHERE packageID = ?"
+);
+$durations->bind_param("i", $packageID);
+$durations->execute();
+$duration_result = $durations->get_result();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,30 +57,14 @@ $durations = $stmt2->get_result();
         <?= htmlspecialchars($package['package_name']) ?>
     </h2>
 
-    <p class="section__description">
-        Up to <?= (int)$package['item_limit'] ?> items · Campus Pickup & Delivery
-    </p>
-
-    <div class="booking__grid">
-        <div class="booking__card">
-
-            <form method="POST" action="confirm_booking.php">
-
-                <input type="hidden" name="packageID" value="<?= $packageID ?>">
-
-                <!-- DURATION -->
-                <h4>Select Storage Duration</h4>
-
-                <?php while ($row = $durations->fetch_assoc()): ?>
-                    <label style="display:block; margin:10px 0;">
-                        <input type="radio" name="duration_id"
-                               value="<?= (int)$row['duration_id'] ?>" required>
-                        <?= htmlspecialchars($row['duration_type']) ?>
-                        — RM <?= number_format($row['price'], 2) ?>
-                    </label>
-                <?php endwhile; ?>
-
-                <br>
+                    <!-- Duration -->
+                    <h4>Select Storage Duration</h4>
+                    <?php while ($row = $duration_result->fetch_assoc()): ?>
+                        <label style="display:block; margin:10px 0;">
+                            <input type="radio" name="duration_id" value="<?= $row['duration_id'] ?>" required>
+                            <?= $row['duration_type'] ?> — RM <?= $row['price'] ?>
+                        </label>
+                    <?php endwhile; ?>
 
                 <!-- ADDRESS -->
                 <h4>Pickup Address</h4>
@@ -118,4 +103,5 @@ $durations = $stmt2->get_result();
 </footer>
 
 </body>
+
 </html>
