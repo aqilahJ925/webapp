@@ -7,7 +7,7 @@ if (isset($_SESSION['success'])) {
     unset($_SESSION['success']); // remove after showing once
 }
 
-require __DIR__ . "/config/db.php";
+require 'admin/connection.php';
 
 $error = "";
 

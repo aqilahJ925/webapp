@@ -1,117 +1,121 @@
 <?php
-require __DIR__ . "/config/db.php";
+require 'admin/connection.php';
+session_start();
 
-$packageID = isset($_GET['packageID']) ? (int)$_GET['packageID'] : 0;
-if ($packageID <= 0) {
-  die("Missing package selection. Please go back to services.");
+if (!isset($_GET['packageID'])) {
+    header("Location: services.php");
+    exit;
 }
 
+$packageID = (int)$_GET['packageID'];
 
-$stmt = $pdo->prepare("SELECT packageID, package_name, item_limit FROM storagepackage WHERE packageID = ?");
-$stmt->execute([$packageID]);
-$package = $stmt->fetch();
+$stmt = $con->prepare("SELECT * FROM storagepackage WHERE packageID = ?");
+$stmt->bind_param("i", $packageID);
+$stmt->execute();
+$result = $stmt->get_result();
+$package = $result->fetch_assoc();
 
 if (!$package) {
-  die("Invalid package selected.");
+    header("Location: services.php");
+    exit;
 }
 
-
-$stmt2 = $pdo->prepare("SELECT duration_id, duration_type, price FROM package_durations WHERE packageID = ? ORDER BY duration_id");
-$stmt2->execute([$packageID]);
-$duration_rows = $stmt2->fetchAll();
+$stmt2 = $con->prepare("SELECT * FROM package_durations WHERE packageID = ?");
+$stmt2->bind_param("i", $packageID);
+$stmt2->execute();
+$durations = $stmt2->get_result();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Booking | EasyStorage</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header class="header">
-      <nav>
-        <div class="nav__bar">
-          <div class="logo nav__logo">
-            <a href="#"><img src="assets/logo.png" alt="logo" /></a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-3-line"></i>
-          </div>
-        </div>
-        <ul class="nav__links" id="nav-links">
-          <li><a href="index.php">HOME</a></li>
-          <a href="logincustomer.php" class="btn">Login</a>
-        </ul>
-      </nav>
-    </header>
 
-    <section class="section__container">
-        <p class="section__subheader">BOOKING DETAILS</p>
-        <h2 class="section__header"><?= htmlspecialchars($package['package_name']) ?></h2>
-        <p class="section__description">
-            Up to <?= $package['item_limit'] ?> items · Campus Pickup & Delivery
-        </p>
-        <div class="booking__grid">
-            <div class="booking__card">
+<header class="header">
+  <nav>
+    <div class="nav__bar">
+      <div class="logo nav__logo">
+        <a href="index.php"><img src="assets/logo.png" alt="logo"></a>
+      </div>
+    </div>
+    <ul class="nav__links">
+      <li><a href="index.php">HOME</a></li>
+    </ul>
+  </nav>
+</header>
 
-                <form method="POST" action="confirm_booking.php">
+<section class="section__container">
+    <p class="section__subheader">BOOKING DETAILS</p>
 
-                    <input type="hidden" name="packageID" value="<?= $packageID ?>">
+    <h2 class="section__header">
+        <?= htmlspecialchars($package['package_name']) ?>
+    </h2>
 
-                    <!-- Duration -->
-                    <h4>Select Storage Duration</h4>
-                    <?php foreach ($duration_rows as $row): ?>
-                      <label style="display:block; margin:10px 0;">
-                        <input type="radio" name="duration_id" value="<?= (int)$row['duration_id'] ?>" required>
-                        <?= htmlspecialchars($row['duration_type']) ?> — RM <?= number_format((float)$row['price'], 2) ?>
+    <p class="section__description">
+        Up to <?= (int)$package['item_limit'] ?> items · Campus Pickup & Delivery
+    </p>
+
+    <div class="booking__grid">
+        <div class="booking__card">
+
+            <form method="POST" action="confirm_booking.php">
+
+                <input type="hidden" name="packageID" value="<?= $packageID ?>">
+
+                <!-- DURATION -->
+                <h4>Select Storage Duration</h4>
+
+                <?php while ($row = $durations->fetch_assoc()): ?>
+                    <label style="display:block; margin:10px 0;">
+                        <input type="radio" name="duration_id"
+                               value="<?= (int)$row['duration_id'] ?>" required>
+                        <?= htmlspecialchars($row['duration_type']) ?>
+                        — RM <?= number_format($row['price'], 2) ?>
                     </label>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
 
+                <br>
 
-                    <br>
+                <!-- ADDRESS -->
+                <h4>Pickup Address</h4>
+                <textarea name="pickup_address"
+                          required
+                          placeholder="Example: Kolej Dahlia, UNIMAS"
+                          style="width:100%; padding:10px;"></textarea>
 
-                    <!-- Address -->
-                    <h4>Pickup Address</h4>
-                    <textarea name="pickup_address" required placeholder="Example: Kolej Dahlia, UNIMAS"
-                        style="width:100%; padding:10px;"></textarea>
+                <br><br>
 
-                    <br><br>
+                <!-- DATES -->
+                <label>Pickup Date</label>
+                <input type="date" name="pickup_date" required>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label" style="font-weight: 500;">Pickup Date</label>
-                            <input type="date" class="form-control shadow-none" name="pickup_date" required>
-                        </div>
+                <br><br>
 
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label" style="font-weight: 500;">Return Date</label>
-                            <input type="date" class="form-control shadow-none" name="return_date" required>
-                        </div>
-                    </div>
+                <label>Return Date</label>
+                <input type="date" name="return_date" required>
 
+                <br><br>
 
-                    <br><br>
+                <button class="btn" type="submit">
+                    Confirm Booking
+                </button>
 
-                    <button class="btn" type="submit">
-                        Confirm Booking
-                    </button>
+            </form>
 
-                </form>
-
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer__bar">
-            SEG01-02 - TMF3973 Web Application Development
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="footer__bar">
+    SEG01-02 - TMF3973 Web Application Development
+  </div>
+</footer>
 
 </body>
 </html>
