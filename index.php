@@ -258,21 +258,6 @@ session_start();
         <div class="logo footer__logo">
           <a href="#"><img src="assets/logo.png" alt="logo" /></a>
         </div>
-        <ul class="footer__socials">
-          <li>
-            <a href="#"><i class="ri-facebook-fill"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-google-fill"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-instagram-line"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-youtube-line"></i></a>
-          </li>
-        </ul>
-      </div>
       <div class="footer__col">
         <h4>Storage Tips</h4>
         <ul class="footer__links">
