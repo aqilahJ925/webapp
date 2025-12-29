@@ -257,6 +257,8 @@ session_start();
         <div class="logo footer__logo">
           <a href="#"><img src="assets/logo.png" alt="logo" /></a>
         </div>
+      </div>
+
       <div class="footer__col">
         <h4>Storage Tips</h4>
         <ul class="footer__links">
