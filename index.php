@@ -191,7 +191,7 @@ session_start();
         <p class="section__subheader">CONTACT US</p>
         <h2 class="section__header">Store Your Items With Complete Peace of Mind</h2>
         <p class="section__description">
-          Experience the convenience of hassle-free storage as we take care of your Belongings
+          Experience the convenience of hassle-free storage as we take care of your belongings
           with professional handling, leaving them safe and secure until you need them again.
         </p>
         <div class="contact__btns">
