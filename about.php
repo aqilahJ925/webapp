@@ -7,12 +7,11 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <!-- Links to your team's shared styles -->
   <link rel="stylesheet" href="styles.css" /> 
   <title>Our Story | EasyStorage</title>
   
   <style>
-    /* --- ELLSIA'S LOCAL FIXES --- */
+
     .story__container {
       padding-top: 100px; 
       max-width: 800px;
@@ -36,7 +35,6 @@ session_start();
       font-style: italic;
     }
 
-    /* THE OVERLAP FIX: Safe container for the return button */
     .return-btn-container {
       margin-top: 50px;
       text-align: center;
@@ -45,7 +43,7 @@ session_start();
     }
 
     .return-btn-container .btn {
-      display: inline-block; /* Essential to stop overlapping */
+      display: inline-block; 
     }
 
     .back__btn {
@@ -90,7 +88,6 @@ session_start();
       </p>
     </div>
 
-    <!-- SAFE BUTTON AREA: Prevents footer/text overlap -->
     <div class="return-btn-container">
       <h3>Ready to head back?</h3>
       <a href="index.php" class="btn">Return to Homepage</a>
