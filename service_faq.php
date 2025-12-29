@@ -7,57 +7,75 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" /> 
   <title>Safe Storage Guide | EasyStorage</title>
+  
+  <style>
+    /* --- ELLSIA'S LOCAL FIXES --- */
+    /* This makes sure your page doesn't start too high up */
+    .faq__container {
+      padding-top: 100px; 
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* THE OVERLAP FIX: This forces the button to be a 'box' that pushes text away */
+    .btn-container {
+      margin-top: 40px;
+      text-align: center;
+      padding-bottom: 50px; /* Adds space before the footer */
+    }
+
+    .btn-container .btn {
+      display: inline-block; /* Essential to stop overlapping */
+    }
+
+    .back__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      font-weight: 600;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
   <section class="section__container faq__container">
+    <!-- Back to Homepage -->
     <a href="index.php" class="back__btn">
       <i class="ri-arrow-left-line"></i> Back to Homepage
     </a>
 
     <p class="section__subheader">RESOURCES</p>
     <h2 class="section__header">The Safe Storage Guide</h2>
-    <p class="section__description">
-      Everything you need to know about keeping your belongings secure at UNIMAS during the break.
-    </p>
 
-    <div class="guarantee__grid">
-      <div class="guarantee__card">
-        <h4><i class="ri-shield-check-line"></i> 24/7 Monitoring</h4>
-        <p>Full CCTV coverage and security patrols at the Unijaya facility.</p>
-      </div>
-      <div class="guarantee__card">
-        <h4><i class="ri-qr-code-line"></i> Digital Tagging</h4>
-        <p>Every item is assigned a unique QR-coded tag upon pickup.</p>
-      </div>
-      <div class="guarantee__card">
-        <h4><i class="ri-temp-hot-line"></i> Climate Control</h4>
-        <p>Dry and ventilated warehouse to prevent moisture damage.</p>
-      </div>
+    <div style="margin-top: 30px;">
+        <div style="margin-bottom: 25px;">
+          <span style="font-weight:bold; color:#0407da; display:block;">Can I access my items mid-break?</span>
+          <p style="color:#666;">Yes! Simply book an appointment 24 hours in advance via our portal.</p>
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <span style="font-weight:bold; color:#0407da; display:block;">What items are prohibited?</span>
+          <p style="color:#666;">For safety, we do not store food, liquids, flammables, or illegal items.</p>
+        </div>
+        
+        <div style="margin-bottom: 25px;">
+          <span style="font-weight:bold; color:#0407da; display:block;">Is there a weight limit?</span>
+          <p style="color:#666;">We ask that boxes don't exceed 20kg so our team can handle them safely.</p>
+        </div>
     </div>
 
-    <h3 class="category__title">Booking & Logistics</h3>
-    <div class="faq__item">
-      <span class="faq__question">Can I access my items mid-break?</span>
-      <p class="faq__answer">Yes! Simply book an "Access Appointment" via the portal 24 hours in advance.</p>
-    </div>
-
-    <h3 class="category__title">Safety & Items</h3>
-    <div class="faq__item">
-      <span class="faq__question">What items are prohibited?</span>
-      <p class="faq__answer">For safety, we do not store food, liquids, flammables, or illegal items.</p>
-    </div>
-
-    <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: #f0f7ff; border-radius: 15px;">
-      <h4>Ready to store your items?</h4>
+    <!-- SIMPLE BUTTON AREA: No extra header, just the button with spacing -->
+    <div class="btn-container">
       <a href="index.php#price" class="btn">View Packages</a>
     </div>
 
   </section>
 
-  <footer class="footer__bar" style="margin-top: 5rem;">
+  <footer class="footer__bar">
     SEG01-02 - TMF3973 Web Application Development
   </footer>
 
