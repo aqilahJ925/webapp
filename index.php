@@ -54,7 +54,7 @@ session_start();
       <div class="header__content">
         <h1>Professional. Secure. Convenient.</h1>
         <div class="header__btn">
-          <button class="btn">Read More</button>
+            <a href="services.php" class="btn">Read More</a>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ session_start();
         platform that combines secure physical storage at UNIJAYA (less than 10 minutes from campus)
         with easy online booking and affordable rates designed for student budgets.
       </p>
-      <button class="btn">Read More</button>
+      <a href="about.php" class="btn">Read More</a>
     </div>
   </section>
 
