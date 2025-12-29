@@ -7,7 +7,7 @@ if (isset($_SESSION['success'])) {
     unset($_SESSION['success']); // remove after showing once
 }
 
-include 'admin/connection.php'; 
+require __DIR__ . "/config/db.php";
 
 $error = "";
 
@@ -16,34 +16,30 @@ if (isset($_POST['login'])) {
     $email_input = trim($_POST['email']); 
     $password_input = trim($_POST['password']);
 
-    if ($email_input == "" || $password_input == "") {
+    if ($email_input === "" || $password_input === "") {
         $error = "Please fill in all fields.";
     } else {
-        
-        $stmt = $con->prepare("SELECT * FROM user WHERE email = ?");
-        $stmt->bind_param("s", $email_input);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
-        if ($result->num_rows == 1) {
-            $user = $result->fetch_assoc();
+        $stmt = $pdo->prepare("
+            SELECT customer_id, full_name, email, password_hash
+            FROM customers
+            WHERE email = ?
+            LIMIT 1
+        ");
+        $stmt->execute([$email_input]);
+        $user = $stmt->fetch();
 
-            
-            $hashed_pass = md5($password_input); 
-            
-            if ($hashed_pass === $user['password']) {
+        if ($user && password_verify($password_input, $user['password_hash'])) {
 
-                $_SESSION['user_id'] = $user['userID'];          // REQUIRED
-                $_SESSION['user_name'] = $user['name']; // For navbar display
-                $_SESSION['email'] = $user['email'];
+            $_SESSION['customer_id'] = (int)$user['customer_id']; // ✅ untuk booking
+            $_SESSION['user_id'] = (int)$user['customer_id'];     // ✅ untuk navbar index.php
+            $_SESSION['user_name'] = $user['full_name'];
+            $_SESSION['email'] = $user['email'];
 
-                header("Location: index.php");
-                exit;
-            } else {
-                $error = "Invalid password.";
-            }
+            header("Location: index.php");
+            exit;
         } else {
-            $error = "User not found with that email.";
+            $error = "Invalid email or password.";
         }
     }
 }
