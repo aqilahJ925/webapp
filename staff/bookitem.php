@@ -101,7 +101,7 @@ $result = $con->query($sql);
 <body>
 
     <nav class="navbar navbar-dark bg-dark px-4">
-        <span class="navbar-brand fw-semibold">EasyStorage Staff Panel</span>
+        <span class="navbar-brand fw-semibold">EasyStorage Staff</span>
         <form action="logout.php" method="POST" class="mb-0">
             <button class="btn btn-outline-light btn-sm">
                 <i class="bi bi-box-arrow-right"></i> Logout
