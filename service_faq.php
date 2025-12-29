@@ -11,23 +11,20 @@ session_start();
   <title>Safe Storage Guide | EasyStorage</title>
   
   <style>
-    /* --- ELLSIA'S LOCAL FIXES --- */
-    /* This makes sure your page doesn't start too high up */
     .faq__container {
       padding-top: 100px; 
       max-width: 800px;
       margin: auto;
     }
 
-    /* THE OVERLAP FIX: This forces the button to be a 'box' that pushes text away */
     .btn-container {
       margin-top: 40px;
       text-align: center;
-      padding-bottom: 50px; /* Adds space before the footer */
+      padding-bottom: 50px; 
     }
 
     .btn-container .btn {
-      display: inline-block; /* Essential to stop overlapping */
+      display: inline-block; 
     }
 
     .back__btn {
@@ -68,7 +65,6 @@ session_start();
         </div>
     </div>
 
-    <!-- SIMPLE BUTTON AREA: No extra header, just the button with spacing -->
     <div class="btn-container">
       <a href="index.php#price" class="btn">View Packages</a>
     </div>
