@@ -195,8 +195,8 @@ session_start();
           with professional handling, leaving them safe and secure until you need them again.
         </p>
         <div class="contact__btns">
-          <button class="btn">Our Services</button>
-          <button class="btn">Contact Us</button>
+          <a href="#service" class="btn" style="background:transparent; border: 2px solid white;">Our Services</a>
+          <a href="#contact-info" class="btn" style="background:white; color:var(--primary-color);">Contact Us</a>
         </div>
       </div>
     </div>
