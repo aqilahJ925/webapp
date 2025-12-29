@@ -1,5 +1,5 @@
 <?php
-require('connection.php');
+require_once __DIR__ . '/../admin/connection.php';
 
 session_start();
 if (isset($_SESSION['staffLogin']) && $_SESSION['staffLogin'] == true) {
@@ -37,11 +37,11 @@ if (isset($_SESSION['staffLogin']) && $_SESSION['staffLogin'] == true) {
       <div class="p-4">
         <div class="mb-3">
           <input 
-            name="staff_name" 
+            name="staff_email" 
             required 
             type="text" 
             class="form-control shadow-none text-center" 
-            placeholder="Staff Name"
+            placeholder="Staff Email"
           >
         </div>
 
@@ -88,8 +88,8 @@ if (isset($_POST['login'])) {
 
   $frm_data = filteration($_POST);
 
-  $query = "SELECT * FROM `staff_cred` WHERE `staff_name`=? AND `staff_pass`=?";
-  $values = [$frm_data['staff_name'], $frm_data['staff_pass']];
+  $query = "SELECT * FROM staff WHERE staff_email=? AND password=?";
+  $values = [$frm_data['staff_email'], $frm_data['staff_pass']];
 
   $res = select($query, $values, "ss");
 
@@ -97,9 +97,10 @@ if (isset($_POST['login'])) {
     $row = mysqli_fetch_assoc($res);
 
     $_SESSION['staffLogin'] = true;
-    $_SESSION['staffId'] = $row['sr_no'];
+    $_SESSION['staffID'] = $row['staffID'];
+    $_SESSION['staff_email'] = $row['staff_email'];
 
-    redirect('dashboard.php');
+    redirect('task.php');
   } else {
     alert('error', 'Login failed - Invalid Staff Credentials!');
   }
