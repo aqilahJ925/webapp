@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "admin/connection.php";
+require 'admin/connection.php';
 
 $sql = "
 SELECT sp.packageID, sp.package_name, sp.item_limit,
@@ -9,8 +9,12 @@ JOIN package_durations pd ON pd.packageID = sp.packageID
 ORDER BY sp.packageID, pd.duration_id
 ";
 
-$stmt = $pdo->query($sql);
-$packages = $stmt->fetchAll();
+$result = $con->query($sql);
+$packages = [];
+
+while ($row = $result->fetch_assoc()) {
+    $packages[] = $row;
+}
 ?>
 
 

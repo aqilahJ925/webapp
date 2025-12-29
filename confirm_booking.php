@@ -1,58 +1,52 @@
 <?php
-require __DIR__ . "/admin/connection.php";
+require 'admin/connection.php';
 session_start();
 
-
-$packageID = isset($_POST['packageID']) ? (int)$_POST['packageID'] : 0;
-$duration_id = isset($_POST['duration_id']) ? (int)$_POST['duration_id'] : 0;
-$pickup_address = trim($_POST['pickup_address'] ?? '');
-$pickup_date = $_POST['pickup_date'] ?? '';
-$return_date = $_POST['return_date'] ?? '';
-
-
-$customer_id = $_SESSION['customer_id'] ?? 0;
+$customer_id = $_SESSION['customer_id'] ?? ($_SESSION['user_id'] ?? 0);
 if ($customer_id <= 0) {
   die("Please login first.");
 }
 
-
-if ($customer_id <= 0) {
-  $tmp = $pdo->query("SELECT customer_id FROM customers ORDER BY customer_id ASC LIMIT 1")->fetch();
-  $customer_id = $tmp ? (int)$tmp['customer_id'] : 0;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  header("Location: services.php");
+  exit;
 }
 
-if ($customer_id <= 0) {
-  die("No customer found. Please create a customer in table customers first.");
+$packageID      = isset($_POST['packageID']) ? (int)$_POST['packageID'] : 0;
+$duration_id    = isset($_POST['duration_id']) ? (int)$_POST['duration_id'] : 0;
+$pickup_date    = $_POST['pickup_date'] ?? '';   // ktk pakai ni sebagai start_date
+
+if ($packageID <= 0 || $duration_id <= 0 || $pickup_date === '') {
+  die("Missing booking data. Please go back.");
 }
 
+$stmt = $con->prepare("
+  SELECT pd.duration_type, pd.price
+  FROM package_durations pd
+  WHERE pd.duration_id = ? AND pd.packageID = ?
+  LIMIT 1
+");
+$stmt->bind_param("ii", $duration_id, $packageID);
+$stmt->execute();
+$res = $stmt->get_result();
+$info = $res->fetch_assoc();
 
-if ($packageID <= 0 || $duration_id <= 0 || $pickup_address === '' || $pickup_date === '' || $return_date === '') {
-  die("Missing booking info. Please go back.");
+if (!$info) {
+  die("Invalid package/duration selected.");
 }
 
-$stmt = $pdo->prepare("SELECT duration_type, price, packageID FROM package_durations WHERE duration_id = ? LIMIT 1");
-$stmt->execute([$duration_id]);
-$dur = $stmt->fetch();
+$duration_type = $info['duration_type'];
+$total_amount  = (float)$info['price'];
 
-if (!$dur) die("Invalid duration selected.");
-if ((int)$dur['packageID'] !== $packageID) die("Duration doesn't match package.");
-
-$stmt2 = $pdo->prepare("
+$stmt2 = $con->prepare("
   INSERT INTO bookings (customer_id, packageID, duration_type, start_date, status, total_amount)
   VALUES (?, ?, ?, ?, 'pending', ?)
 ");
-$stmt2->execute([
-  $customer_id,
-  $packageID,
-  $dur['duration_type'],
-  $pickup_date,          
-  $dur['price']
-]);
+$stmt2->bind_param("iissd", $customer_id, $packageID, $duration_type, $pickup_date, $total_amount);
+$stmt2->execute();
 
-$booking_id = $pdo->lastInsertId();
+$booking_id = $con->insert_id;
 
-
-header("Location: payment.php?booking_id=" . urlencode($booking_id));
+header("Location: payment.php?booking_id=" . $booking_id);
 exit;
-
 
