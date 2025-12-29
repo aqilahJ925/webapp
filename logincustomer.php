@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         $error = "Please fill in all fields.";
     } else {
         
-        $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt = $con->prepare("SELECT * FROM user WHERE email = ?");
         $stmt->bind_param("s", $email_input);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -33,8 +33,8 @@ if (isset($_POST['login'])) {
             
             if ($hashed_pass === $user['password']) {
 
-                $_SESSION['user_id'] = $user['id'];          // REQUIRED
-                $_SESSION['user_name'] = $user['firstName']; // For navbar display
+                $_SESSION['user_id'] = $user['userID'];          // REQUIRED
+                $_SESSION['user_name'] = $user['name']; // For navbar display
                 $_SESSION['email'] = $user['email'];
 
                 header("Location: index.php");

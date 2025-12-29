@@ -672,3 +672,17 @@ input[type="date"] {
     color:blue;
 }
 
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 120px; /* adjust if needed */
+}
+
+.name-text {
+  display: inline-block;
+  max-width: 80px;  /* controls when ... appears */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

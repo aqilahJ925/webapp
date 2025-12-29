@@ -4,23 +4,22 @@ include 'admin/connection.php';
 $message="";
 
 if(isset($_POST['signUp'])){
-    $firstName=$_POST['fName'];
-    $lastName=$_POST['lName'];
+    $fullName=$_POST['fname'];
     $email=$_POST['email'];
     $address=$_POST['address'];
     $phone=$_POST['phone'];
     $password=$_POST['password'];
     $password=md5($password);
 
-     $checkEmail="SELECT * From users where email='$email'";
+     $checkEmail="SELECT * From user where email='$email'";
      $result=$con->query($checkEmail); 
      
      if($result->num_rows>0){
         $message = "<div class='alert alert-danger'>Email Address Already Exists!</div>";
      }
      else{
-        $insertQuery="INSERT INTO users(firstName,lastName,email, address, phone, password)
-                       VALUES ('$firstName','$lastName','$email','$address','$phone','$password')";
+        $insertQuery="INSERT INTO user(name ,email, address, phone_number, password)
+                       VALUES ('$fullName','$email','$address','$phone','$password')";
             
             if ($con->query($insertQuery) === TRUE) {
                 session_start();
@@ -39,7 +38,7 @@ if(isset($_POST['signIn'])){
    $password=$_POST['password'];
    $password=md5($password) ;
    
-   $sql="SELECT * FROM users WHERE email='$email' and password='$password'";
+   $sql="SELECT * FROM user WHERE email='$email' and password='$password'";
    $result=$con->query($sql); 
    
    if($result->num_rows>0){
@@ -78,13 +77,8 @@ if(isset($_POST['signIn'])){
 
             <form method="POST" action="register.php">
                 <div class="mb-3">
-                    <label class="form-label">First Name</label>
-                    <input type="text" name="fName" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" name="lName" class="form-control" required>
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="fname" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
