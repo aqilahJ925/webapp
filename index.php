@@ -55,7 +55,6 @@ session_start();
         <h1>Professional. Secure. Convenient.</h1>
         <div class="header__btn">
           <a href="service_faq.php" class="btn">Read More</a>
-            <a href="services.php" class="btn">Read More</a>
         </div>
       </div>
     </div>
