@@ -55,7 +55,6 @@ session_start();
         <h1>Professional. Secure. Convenient.</h1>
         <div class="header__btn">
           <a href="service_faq.php" class="btn">Read More</a>
-            <a href="services.php" class="btn">Read More</a>
         </div>
       </div>
     </div>
@@ -192,12 +191,12 @@ session_start();
         <p class="section__subheader">CONTACT US</p>
         <h2 class="section__header">Store Your Items With Complete Peace of Mind</h2>
         <p class="section__description">
-          Experience the convenience of hassle-free storage as we take care of your Belongings
+          Experience the convenience of hassle-free storage as we take care of your belongings
           with professional handling, leaving them safe and secure until you need them again.
         </p>
         <div class="contact__btns">
-          <button class="btn">Our Services</button>
-          <button class="btn">Contact Us</button>
+          <a href="#service" class="btn" style="background:transparent; border: 2px solid white;">Our Services</a>
+          <a href="#contact" class="btn" style="background:white; color:var(--primary-color);">Contact Us</a>
         </div>
       </div>
     </div>
@@ -251,28 +250,15 @@ session_start();
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="contact">
 
     <div class="section__container footer__container">
       <div class="footer__col">
         <div class="logo footer__logo">
           <a href="#"><img src="assets/logo.png" alt="logo" /></a>
         </div>
-        <ul class="footer__socials">
-          <li>
-            <a href="#"><i class="ri-facebook-fill"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-google-fill"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-instagram-line"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="ri-youtube-line"></i></a>
-          </li>
-        </ul>
       </div>
+
       <div class="footer__col">
         <h4>Storage Tips</h4>
         <ul class="footer__links">
