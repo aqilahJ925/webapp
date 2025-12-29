@@ -250,7 +250,7 @@ session_start();
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="contact">
 
     <div class="section__container footer__container">
       <div class="footer__col">
