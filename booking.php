@@ -1,27 +1,32 @@
 <?php
-require __DIR__ . "/config/db.php";
+require_once "admin/connection.php";
 
-$packageID = isset($_GET['packageID']) ? (int)$_GET['packageID'] : 0;
-if ($packageID <= 0) {
-  die("Missing package selection. Please go back to services.");
+if (!isset($_GET['package'])) {
+    header("Location: index.php");
+    exit;
 }
 
+$packageID = (int) $_GET['package'];
 
-$stmt = $pdo->prepare("SELECT packageID, package_name, item_limit FROM storagepackage WHERE packageID = ?");
-$stmt->execute([$packageID]);
-$package = $stmt->fetch();
+// Get package
+$stmt = $con->prepare("SELECT * FROM storagepackage WHERE packageID = ?");
+$stmt->bind_param("i", $packageID);
+$stmt->execute();
+$package = $stmt->get_result()->fetch_assoc();
 
 if (!$package) {
-  die("Invalid package selected.");
+    header("Location: index.php");
+    exit;
 }
 
-
-$stmt2 = $pdo->prepare("SELECT duration_id, duration_type, price FROM package_durations WHERE packageID = ? ORDER BY duration_id");
-$stmt2->execute([$packageID]);
-$duration_rows = $stmt2->fetchAll();
+// Get durations
+$durations = $con->prepare(
+    "SELECT * FROM package_durations WHERE packageID = ?"
+);
+$durations->bind_param("i", $packageID);
+$durations->execute();
+$duration_result = $durations->get_result();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,13 +69,12 @@ $duration_rows = $stmt2->fetchAll();
 
                     <!-- Duration -->
                     <h4>Select Storage Duration</h4>
-                    <?php foreach ($duration_rows as $row): ?>
-                      <label style="display:block; margin:10px 0;">
-                        <input type="radio" name="duration_id" value="<?= (int)$row['duration_id'] ?>" required>
-                        <?= htmlspecialchars($row['duration_type']) ?> — RM <?= number_format((float)$row['price'], 2) ?>
-                    </label>
-                <?php endforeach; ?>
-
+                    <?php while ($row = $duration_result->fetch_assoc()): ?>
+                        <label style="display:block; margin:10px 0;">
+                            <input type="radio" name="duration_id" value="<?= $row['duration_id'] ?>" required>
+                            <?= $row['duration_type'] ?> — RM <?= $row['price'] ?>
+                        </label>
+                    <?php endwhile; ?>
 
                     <br>
 
@@ -114,4 +118,5 @@ $duration_rows = $stmt2->fetchAll();
     </footer>
 
 </body>
+
 </html>

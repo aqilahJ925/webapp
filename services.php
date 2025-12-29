@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/config/db.php";
+require __DIR__ . "admin/connection.php";
 
 $sql = "
 SELECT sp.packageID, sp.package_name, sp.item_limit,
