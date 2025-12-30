@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Staff Panel | EasyStorage</title>
+<title>Staff | EasyStorage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap -->
@@ -23,7 +23,7 @@ body { min-height: 100vh; background-color: #f8f9fa; }
 
 <!-- TOP NAVBAR -->
 <nav class="navbar navbar-dark bg-dark px-4">
-    <span class="navbar-brand fw-semibold">EasyStorage Staff Panel</span>
+    <span class="navbar-brand fw-semibold">EasyStorage Staff</span>
     <form action="logout.php" method="POST" class="mb-0">
         <button class="btn btn-outline-light btn-sm">
             <i class="bi bi-box-arrow-right"></i> Logout
