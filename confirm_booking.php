@@ -39,7 +39,7 @@ $duration_type = $info['duration_type'];
 $total_amount  = (float)$info['price'];
 
 $stmt2 = $con->prepare("
-  INSERT INTO bookings (customer_id, packageID, duration_type, start_date, status, total_amount)
+  INSERT INTO booking (customer_id, packageID, duration_type, start_date, status, total_amount)
   VALUES (?, ?, ?, ?, 'pending', ?)
 ");
 $stmt2->bind_param("iissd", $customer_id, $packageID, $duration_type, $pickup_date, $total_amount);
@@ -47,6 +47,7 @@ $stmt2->execute();
 
 $booking_id = $con->insert_id;
 
-header("Location: payment.php?booking_id=" . $booking_id);
+header("Location: payment_process.php?booking_id=" . $booking_id);
 exit;
+
 
