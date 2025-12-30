@@ -80,6 +80,133 @@ $totalStaff = $con->query("SELECT COUNT(*) AS count FROM staff")->fetch_assoc()[
             </div>
         </div>
 
+        <!-- Add Staff Button -->
+        <div class="mb-3 d-flex justify-content-end">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addStaffModal">
+                <i class="bi bi-person-plus"></i> Add Staff
+            </button>
+        </div>
+
+        <!-- Add Staff Modal -->
+        <div class="modal fade" id="addStaffModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="add_staff.php" method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Staff</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="staff_name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="staff_email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="staff_phone" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Add Staff</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assign Task Section -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white fw-semibold">Assign Task</div>
+            <div class="card-body">
+                <form action="assign_task.php" method="POST" class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label class="form-label">Booking</label>
+                        <select name="bookingID" class="form-select" required>
+                            <option value="">-- Select Booking --</option>
+                            <?php
+                            $bookings = $con->query("SELECT bookingID FROM booking WHERE booking_status != 'Delivered'");
+                            while($b = $bookings->fetch_assoc()):
+                            ?>
+                                <option value="<?= $b['bookingID'] ?>">Booking #<?= $b['bookingID'] ?></option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Task Type</label>
+                        <select name="task_type" class="form-select" required>
+                            <option value="">-- Select Task --</option>
+                            <option value="Collect">Collect</option>
+                            <option value="Deliver">Deliver</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Assign Staff</label>
+                        <select name="staffID" class="form-select" required>
+                            <option value="">-- Select Staff --</option>
+                            <?php
+                            $staffList = $con->query("SELECT staffID, staff_name FROM staff");
+                            while($s = $staffList->fetch_assoc()):
+                            ?>
+                                <option value="<?= $s['staffID'] ?>"><?= htmlspecialchars($s['staff_name']) ?></option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Assign Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Assigned Tasks Table -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white fw-semibold">Assigned Tasks</div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Booking ID</th>
+                            <th>Staff Name</th>
+                            <th>Task Type</th>
+                            <th>Task Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $assigned = $con->query("
+                            SELECT a.taskID, a.bookingID, s.staff_name, a.task_type, a.task_status
+                            FROM assignedtask a
+                            JOIN staff s ON a.staffID = s.staffID
+                            ORDER BY a.taskID DESC
+                        ");
+                        if($assigned->num_rows > 0):
+                            $i = 1;
+                            while($row = $assigned->fetch_assoc()):
+                        ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $row['bookingID'] ?></td>
+                                <td><?= htmlspecialchars($row['staff_name']) ?></td>
+                                <td><?= $row['task_type'] ?></td>
+                                <td><?= $row['task_status'] ?></td>
+                            </tr>
+                        <?php
+                            endwhile;
+                        else:
+                        ?>
+                            <tr><td colspan="5" class="text-center">No tasks assigned yet.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- Staff Table -->
         <div class="card shadow-sm">
             <div class="card-header bg-white fw-semibold">Staff List</div>

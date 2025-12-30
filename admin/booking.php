@@ -59,7 +59,7 @@ $paymentQuery = $con->query("SELECT * FROM payment ORDER BY paymentID DESC");
     <div class="sidebar">
         <a href="dashboard.php"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
         <a href="staff.php"><i class="bi bi-people me-2"></i> Staff</a>
-        <a href="user.php"><i class="bi bi-person-lines-fill me-2"></i> Users</a>
+        <a href="users.php"><i class="bi bi-person-lines-fill me-2"></i> Users</a>
         <a href="packages.php"><i class="bi bi-box-seam me-2"></i> Storage Packages</a>
         <a href="booking.php" class="active"><i class="bi bi-credit-card me-2"></i> Booking & Payments</a>
     </div>

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../admin/connection.php';
 
 session_start();
 if (isset($_SESSION['staffLogin']) && $_SESSION['staffLogin'] == true) {
-    redirect('dashboard.php');
+    redirect('task.php');
 }
 ?>
 
