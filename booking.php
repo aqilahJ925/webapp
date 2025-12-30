@@ -8,6 +8,7 @@ if (!isset($_GET['package'])) {
 
 $packageID = (int) $_GET['package'];
 
+
 // Get package
 $stmt = $con->prepare("SELECT * FROM storagepackage WHERE packageID = ?");
 $stmt->bind_param("i", $packageID);

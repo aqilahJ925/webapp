@@ -3,35 +3,53 @@ require 'admin/connection.php';
 session_start();
 
 $booking_id = isset($_GET['booking_id']) ? (int)$_GET['booking_id'] : 0;
-if ($booking_id <= 0) die("Invalid booking.");
+if ($booking_id <= 0) {
+  die("Invalid booking.");
+}
 
-// ambik booking info
-$stmt = $con->prepare("SELECT booking_id, total_amount, status FROM bookings WHERE booking_id = ? LIMIT 1");
+$stmt = $con->prepare("
+  SELECT b.bookingID, b.booking_status,
+         pd.duration_type, pd.price
+  FROM booking b
+  LEFT JOIN package_durations pd ON pd.duration_id = b.duration_id
+  WHERE b.bookingID = ?
+  LIMIT 1
+");
+
 $stmt->bind_param("i", $booking_id);
 $stmt->execute();
-$res = $stmt->get_result();
-$booking = $res->fetch_assoc();
+$result = $stmt->get_result();
+$booking = $result->fetch_assoc();
 
-if (!$booking) die("Booking not found.");
-
+if (!$booking) {
+  die("Booking not found.");
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Payment</title>
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <h2>Payment</h2>
-<p>Booking ID: <b><?= (int)$booking['booking_id'] ?></b></p>
-<p>Status: <b><?= htmlspecialchars($booking['status']) ?></b></p>
-<p>Total Amount: <b>RM <?= number_format((float)$booking['total_amount'], 2) ?></b></p>
 
-<a href="payment_process.php?booking_id=<?= (int)$booking['booking_id'] ?>">
-  <button class="btn">Pay Now</button>
-</a>
+<p><b>Booking ID:</b> <?= (int)$booking['bookingID'] ?></p>
+<p><b>Duration:</b> <?= htmlspecialchars($booking['duration_type']) ?></p>
+<p><b>Amount:</b> RM <?= number_format($booking['price'], 2) ?></p>
+
+<form method="POST" action="payment_process.php">
+  <input type="hidden" name="booking_id" value="<?= (int)$booking['bookingID'] ?>">
+
+  <select name="method" required>
+    <option value="cash">Cash</option>
+    <option value="online">Online Banking</option>
+  </select>
+
+  <button type="submit">Pay Now</button>
+</form>
+
 
 </body>
 </html>
