@@ -2,6 +2,8 @@
 require 'admin/connection.php';
 session_start();
 
+$duration_id = (int)($_POST['duration_id'] ?? 0);
+
 $userID = $_SESSION['user_id'] ?? 0;
 if ($userID <= 0) {
   die("Please login first.");
@@ -16,20 +18,20 @@ $packageID   = (int)($_POST['packageID'] ?? 0);
 $pickup_date = $_POST['pickup_date'] ?? '';
 $return_date = $_POST['return_date'] ?? '';
 
-if ($packageID <= 0 || $pickup_date === '' || $return_date === '') {
+if ($packageID <= 0 || $duration_id <= 0 || $pickup_date === '' || $return_date === '') {
   die("Missing booking data. Please go back.");
 }
 
 $stmt2 = $con->prepare("
-  INSERT INTO booking (userID, packageID, pickup_date, return_date, booking_status)
-  VALUES (?, ?, ?, ?, 'pending')
+  INSERT INTO booking (userID, packageID, duration_id, pickup_date, return_date, booking_status)
+  VALUES (?, ?, ?, ?, ?, 'pending_payment')
 ");
-$stmt2->bind_param("iiss", $userID, $packageID, $pickup_date, $return_date);
+$stmt2->bind_param("iiiss", $userID, $packageID, $duration_id, $pickup_date, $return_date);
 $stmt2->execute();
 
 $booking_id = $con->insert_id;
 
-header("Location: payment_process.php?booking_id=" . $booking_id);
+header("Location: payment.php?booking_id=" . $booking_id);
 exit;
 
 
