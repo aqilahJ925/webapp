@@ -23,10 +23,10 @@ if ($packageID <= 0 || $duration_id <= 0 || $pickup_date === '' || $return_date 
 }
 
 $stmt2 = $con->prepare("
-  INSERT INTO booking (userID, packageID, duration_id, pickup_date, return_date, booking_status)
-  VALUES (?, ?, ?, ?, ?, 'pending_payment')
+  INSERT INTO booking (userID, packageID, pickup_date, return_date, booking_status)
+  VALUES (?, ?, ?, ?, 'pending')
 ");
-$stmt2->bind_param("iiiss", $userID, $packageID, $duration_id, $pickup_date, $return_date);
+$stmt2->bind_param("iiss", $userID, $packageID, $pickup_date, $return_date);
 $stmt2->execute();
 
 $booking_id = $con->insert_id;

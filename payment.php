@@ -11,7 +11,7 @@ $stmt = $con->prepare("
   SELECT b.bookingID, b.booking_status,
          pd.duration_type, pd.price
   FROM booking b
-  LEFT JOIN package_durations pd ON pd.duration_id = b.duration_id
+  LEFT JOIN package_durations pd ON pd.packageID = b.packageID
   WHERE b.bookingID = ?
   LIMIT 1
 ");
