@@ -17,6 +17,12 @@ if (!$packageID || !$duration_id || !$pickup_address || !$pickup_date || !$retur
     die("Please fill in all required fields.");
 }
 
+$pickup_address = $_POST['pickup_address'];
+
+$stmt = $con->prepare("UPDATE user SET address = ? WHERE userID = ?");
+$stmt->bind_param("si", $pickup_address, $_SESSION['user_id']);
+$stmt->execute();
+
 // Insert booking
 $stmt = $con->prepare("
     INSERT INTO booking (userID, packageID, pickup_date, return_date, booking_status)

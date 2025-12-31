@@ -17,7 +17,7 @@ if (isset($_POST['update_profile'])) {
   $email    = $_POST['email'];
 
   $update = $con->prepare("
-    UPDATE users 
+    UPDATE user 
     SET name = ?, address = ?, phone_number = ?, email = ?
     WHERE userID = ?
   ");

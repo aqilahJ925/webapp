@@ -1,56 +1,76 @@
 <?php 
 include 'admin/connection.php';
 
-$message="";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if(isset($_POST['signUp'])){
-    $fullName=$_POST['fname'];
-    $email=$_POST['email'];
-    $address=$_POST['address'];
-    $phone=$_POST['phone'];
-    $password=$_POST['password'];
-    $password=md5($password);
+require 'src/PHPMailer.php';
+require 'src/SMTP.php';
+require 'src/Exception.php';
 
-     $checkEmail="SELECT * From user where email='$email'";
-     $result=$con->query($checkEmail); 
-     
-     if($result->num_rows>0){
+$message = "";
+
+if (isset($_POST['signUp'])) {
+
+    $fullName = $_POST['fname'];
+    $email    = $_POST['email'];
+    $address  = $_POST['address'];
+    $phone    = $_POST['phone'];
+    $password = md5($_POST['password']); // keep md5 for now
+
+    // Check email exists
+    $checkEmail = "SELECT * FROM user WHERE email='$email'";
+    $result = $con->query($checkEmail);
+
+    if ($result->num_rows > 0) {
         $message = "<div class='alert alert-danger'>Email Address Already Exists!</div>";
-     }
-     else{
-        $insertQuery="INSERT INTO user(name ,email, address, phone_number, password)
-                       VALUES ('$fullName','$email','$address','$phone','$password')";
-            
-            if ($con->query($insertQuery) === TRUE) {
-                session_start();
-                $_SESSION['success'] = "Registration successful! Please login.";
-                header("Location: logincustomer.php");
-                exit();
-            }
-            else{
-               $message = "<div class='alert alert-danger'>Error: " . $con->error . "</div>";
-            }
-     }
-}
+    } else {
 
-if(isset($_POST['signIn'])){
-   $email=$_POST['email'];
-   $password=$_POST['password'];
-   $password=md5($password) ;
-   
-   $sql="SELECT * FROM user WHERE email='$email' and password='$password'";
-   $result=$con->query($sql); 
-   
-   if($result->num_rows>0){
-    session_start();
-    $row=$result->fetch_assoc();
-    $_SESSION['email']=$row['email'];
-    header("Location: homepage.php");
-    exit();
-   }
-   else{
-    echo "Not Found, Incorrect Email or Password";
-   }
+        // Insert user
+        $insertQuery = "INSERT INTO user (name, email, address, phone_number, password)
+                        VALUES ('$fullName', '$email', '$address', '$phone', '$password')";
+
+        if ($con->query($insertQuery) === TRUE) {
+
+            // SEND EMAIL AFTER SUCCESSFUL REGISTRATION
+            $mail = new PHPMailer(true);
+
+            try {
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'nuraqj925@gmail.com';       
+                $mail->Password   = 'bzgz msbi icsk rids';    
+                $mail->SMTPSecure = 'tls';
+                $mail->Port       = 587;
+
+                $mail->setFrom('nuraqj925@gmail.com', 'EasyStorage Hub');
+                $mail->addAddress($email, $fullName);
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Welcome to EasyStorage!';
+                $mail->Body = "
+                    <h3>Hi $fullName 👋</h3>
+                    <p>Thank you for registering with <b>EasyStorage</b>.</p>
+                    <p>You can now log in using your email.</p>
+                    <br>
+                    <p>Regards,<br>EasyStorage Team</p>
+                ";
+
+                $mail->send();
+            } catch (Exception $e) {
+                // Email failure won't stop registration
+            }
+
+            session_start();
+            $_SESSION['success'] = "Registration successful! Please login.";
+            header("Location: logincustomer.php");
+            exit();
+
+        } else {
+            $message = "<div class='alert alert-danger'>Database Error</div>";
+        }
+    }
 }
 ?>
 

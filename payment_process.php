@@ -19,12 +19,13 @@ $amount = $duration['price'];
 $status = ($method === 'online') ? 'paid' : 'pending';
 $payment_date = date('Y-m-d H:i:s');
 
+$ref_id = 'ES-' . strtoupper(uniqid());
 // Insert payment
 $stmt = $con->prepare("
-    INSERT INTO payment (bookingID, amount, payment_method, payment_date, payment_status)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO payment (bookingID, amount, payment_method, payment_date, payment_status, ref_id)
+    VALUES (?, ?, ?, ?, ?, ?)
 ");
-$stmt->bind_param("idsss", $booking_id, $amount, $method, $payment_date, $status);
+$stmt->bind_param("idssss", $booking_id, $amount, $method, $payment_date, $status, $ref_id);
 $stmt->execute();
 
 header("Location: payment_success.php?booking_id=" . $booking_id);
