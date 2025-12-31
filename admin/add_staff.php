@@ -1,31 +1,30 @@
 <?php
+require 'connection.php';
 session_start();
-require "connection.php";
 
-// Check admin login
-if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
-    header("Location: index.php");
-    exit();
+// Admin session check
+if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] === true)) {
+    header('Location: index.php');
+    exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name  = $_POST['staff_name'];
-    $email = $_POST['staff_email'];
-    $phone = $_POST['staff_phone'];
+    $name = $con->real_escape_string($_POST['staff_name']);
+    $email = $con->real_escape_string($_POST['staff_email']);
+    $phone = $con->real_escape_string($_POST['staff_phone']);
+    $shift = $con->real_escape_string($_POST['shift']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // hash password
 
-    // Insert new staff into staff table
-    $stmt = $con->prepare("INSERT INTO staff (staff_name, staff_email, staff_phone) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $phone);
-    
-    if ($stmt->execute()) {
-        // Redirect back to staff page
-        header("Location: staff.php");
-        exit();
+    $sql = "INSERT INTO staff (staff_name, staff_email, staff_phone, shift, password)
+            VALUES ('$name', '$email', '$phone', '$shift', '$password')";
+
+    if ($con->query($sql)) {
+        $_SESSION['success'] = "Staff added successfully.";
     } else {
-        echo "Error adding staff: " . $stmt->error;
+        $_SESSION['error'] = "Error: " . $con->error;
     }
-} else {
+
     header("Location: staff.php");
-    exit();
+    exit;
 }
 ?>
