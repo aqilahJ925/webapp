@@ -125,6 +125,7 @@ $result = $con->query($sql);
                             <strong><?= htmlspecialchars($booking['customer_name']) ?></strong>
                             (<?= htmlspecialchars($booking['customer_no']) ?>) |
                             Package: <?= htmlspecialchars($booking['package_name']) ?> |
+                            BookingID: <?= htmlspecialchars($booking['bookingID']) ?>
                             Status:
                             <form action="update_booking_status.php" method="POST" class="d-inline">
                                 <input type="hidden" name="bookingID" value="<?= $booking['bookingID'] ?>">
