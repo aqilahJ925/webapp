@@ -140,6 +140,13 @@ session_start();
     <p class="section__description">
       We offer flexible and affordable storage packages designed for students.
     </p>
+    <?php
+    // Determine where the user should be redirected
+    $starter_link = isset($_SESSION['user_id']) ? "booking.php?package=1" : "logincustomer.php";
+    $standard_link = isset($_SESSION['user_id']) ? "booking.php?package=2" : "logincustomer.php";
+    $max_link = isset($_SESSION['user_id']) ? "booking.php?package=3" : "logincustomer.php";
+    ?>
+
     <div class="price__grid">
       <div class="price__card">
         <h4>STARTER PACK</h4>
@@ -150,10 +157,11 @@ session_start();
         <p>Full Semester Break Option (RM60)</p>
         <p>Campus Pickup & Delivery</p>
         <p>Digital Inventory Receipt</p>
-        <a href="booking.php?package=1">
+        <a href="<?php echo $starter_link; ?>">
           <button class="btn">Book Starter</button>
         </a>
       </div>
+
       <div class="price__card">
         <div class="price__card__ribbon">BESTSELLER</div>
         <h4>STANDARD PACK</h4>
@@ -164,10 +172,11 @@ session_start();
         <p>Full Semester Break Option (RM85)</p>
         <p>Campus Pickup & Delivery</p>
         <p>Digital Inventory Receipt</p>
-        <a href="booking.php?package=2">
+        <a href="<?php echo $standard_link; ?>">
           <button class="btn">Book Standard</button>
         </a>
       </div>
+
       <div class="price__card">
         <h4>MAX PACK</h4>
         <h3><sup>From RM</sup>60</h3>
@@ -178,11 +187,12 @@ session_start();
         <p>Campus Pickup & Delivery</p>
         <p>Digital Inventory Receipt</p>
         <p>Maximum Capacity</p>
-        <a href="booking.php?package=3">
+        <a href="<?php echo $max_link; ?>">
           <button class="btn">Book Max</button>
         </a>
       </div>
     </div>
+
   </section>
 
   <section class="contact">
